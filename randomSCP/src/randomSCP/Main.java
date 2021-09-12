@@ -28,6 +28,10 @@ public class Main {
     	printInstructions();
     	int input = keyboard.nextInt();
     	
+    	if(input == 4) {
+    		break;
+    	}
+    	
     	System.out.println("How many articles?");
     	quantity = keyboard.nextInt();
     			
@@ -54,7 +58,34 @@ public class Main {
 			    System.out.println();
 			    break;
 			    
-    	case 3: isFinished = true;
+    	case 3: System.out.println("Which series? (i.e. 1, 2, 3, 4, 5, 6, or 7)");
+    			int seriesNumber = keyboard.nextInt();
+		    	for(int i = 0; i < quantity; i++) {
+			    	switch(seriesNumber) {
+			    	case 1: webpageURL = generateRandomRangedSCP(001, 999);
+			    			break;
+			    	case 2: webpageURL = generateRandomRangedSCP(1000, 1999);
+	    					break;
+			    	case 3: webpageURL = generateRandomRangedSCP(2000, 2999);
+	    					break;
+			    	case 4: webpageURL = generateRandomRangedSCP(3000, 3999);
+	    					break;
+			    	case 5: webpageURL = generateRandomRangedSCP(4000, 4999);
+	    					break;
+			    	case 6: webpageURL = generateRandomRangedSCP(5000, 5999);
+	    					break;
+			    	case 7: webpageURL = generateRandomRangedSCP(6000, 6999);
+	    					break;
+			    	default: System.out.println("Error, invalid series.");
+			    			return;
+			    	}
+			    	System.out.println("Accessing " + webpageURL.substring(29));
+				    openWebpage(webpageURL);
+			    }
+		    	System.out.println();
+		    	break;
+    		
+    	case 4: isFinished = true;
     			break;
     	}
     	
@@ -62,7 +93,7 @@ public class Main {
  }
  
 public static void printInstructions() {
-	System.out.println("Type '1' for a random SCP, '2' for an SCP within a certain range, and '3' to quit.");
+	System.out.println("Type '1' for a random SCP, '2' for an SCP within a certain range, '3' for a specific series, and '4' to quit.");
 }
  
 public static void printSCPLogo() {
