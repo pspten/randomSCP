@@ -28,12 +28,14 @@ public class Main {
     	printInstructions();
     	int input = keyboard.nextInt();
     	
-    	if(input == 4) {
+    	if(input == 5) {
     		break;
     	}
     	
-    	System.out.println("How many articles?");
-    	quantity = keyboard.nextInt();
+    	if(input != 4) {
+    		System.out.println("How many articles?");
+        	quantity = keyboard.nextInt();
+    	}
     			
     	switch(input) {
     	case 1: for(int i = 0; i < quantity; i++) {
@@ -85,15 +87,25 @@ public class Main {
 		    	System.out.println();
 		    	break;
     		
-    	case 4: isFinished = true;
+    	case 4: System.out.println("Which SCP?");
+				String skipSearch = keyboard.next();
+				System.out.println("Accessing scp-" + skipSearch);
+	    		openWebpage("https://scp-wiki.wikidot.com/scp-" + skipSearch);
+	    		System.out.println();
+	    		break;
+    			
+    	case 5:	isFinished = true;
     			break;
     	}
+    	
+    	
     	
     }
  }
  
 public static void printInstructions() {
-	System.out.println("Type '1' for a random SCP, '2' for an SCP within a certain range, '3' for a specific series, and '4' to quit.");
+	System.out.println("Type '1' for a random SCP, '2' for an SCP within a certain range,\n'3' for a specific series, "
+			+ "'4' to search for a specific SCP, and '5' to quit.");
 }
  
 public static void printSCPLogo() {
