@@ -1,9 +1,5 @@
 package randomSCP;
 
-import java.awt.Desktop;
-
-import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 import java.util.Random;
 import java.util.Scanner;
@@ -12,17 +8,44 @@ import java.util.Scanner;
 
 public class Main {
 
+	final static int SCP_UPPER_BOUNDS = 6999;
+	
  public static void main(String[] args)  {
   
-	Scanner keyboard = new Scanner(System.in);
+	 printSCPLogo();
+	 
+	 startSCPFinder();
+	 
+ }
+ 
+public static void printInstructions() {
+	System.out.println("Type '1' for a random SCP, '2' for an SCP within a certain range,\n'3' for a specific series, "
+			+ "'4' to access a specific SCP, and '5' to quit.");
+}
+ 
+public static void printSCPLogo() {
+	System.out.println("WARNING: THE FOUNDATION DATABASE IS CLASSIFIED\r\n"
+			+ "ACCESS BY UNAUTHORIZED PERSONNEL IS STRICTLY PROHIBITED\r\n"
+			+ "PERPETRATORS WILL BE TRACKED, LOCATED, AND DETAINED");
 	
+	System.out.println(
+			"  ______     ______  _______   \r\n"
+			+ ".' ____ \\  .' ___  ||_   __ \\  \r\n"
+			+ "| (___ \\_|/ .'   \\_|  | |__) | \r\n"
+			+ " _.____`. | |         |  ___/  \r\n"
+			+ "| \\____) |\\ `.___.'\\ _| |_     \r\n"
+			+ " \\______.' `.____ .'|_____|    \r\n"
+			+ "   SECURE CONTAIN PROTECT    \r\n"
+			+ "");
+}
+
+public static void startSCPFinder() {
+	Scanner keyboard = new Scanner(System.in);
 	String webpageURL = "";
 	boolean isFinished = false;
 	int rangeStart = 0;
 	int rangeEnd = 0;
 	int quantity = 1;
-	
-	printSCPLogo();
     
     while(!isFinished) {
     	printInstructions();
@@ -95,33 +118,10 @@ public class Main {
 	    		break;
     			
     	case 5:	isFinished = true;
+    			keyboard.close();
     			break;
-    	}
-    	
-    	
-    	
+    	}	
     }
- }
- 
-public static void printInstructions() {
-	System.out.println("Type '1' for a random SCP, '2' for an SCP within a certain range,\n'3' for a specific series, "
-			+ "'4' to search for a specific SCP, and '5' to quit.");
-}
- 
-public static void printSCPLogo() {
-	System.out.println("WARNING: THE FOUNDATION DATABASE IS CLASSIFIED\r\n"
-			+ "ACCESS BY UNAUTHORIZED PERSONNEL IS STRICTLY PROHIBITED\r\n"
-			+ "PERPETRATORS WILL BE TRACKED, LOCATED, AND DETAINED");
-	
-	System.out.println(
-			"  ______     ______  _______   \r\n"
-			+ ".' ____ \\  .' ___  ||_   __ \\  \r\n"
-			+ "| (___ \\_|/ .'   \\_|  | |__) | \r\n"
-			+ " _.____`. | |         |  ___/  \r\n"
-			+ "| \\____) |\\ `.___.'\\ _| |_     \r\n"
-			+ " \\______.' `.____ .'|_____|    \r\n"
-			+ "   SECURE CONTAIN PROTECT    \r\n"
-			+ "");
 }
 
 public static void openWebpage(String webpageURL) {
@@ -150,9 +150,8 @@ public static String generateRandomRangedSCP(int lowerBounds, int upperBounds) {
 public static String generateRandomSCP() {
 	
 	Random rand = new Random();
-	int upperBounds = 7000;
-	
-	int randomSCPNumber = rand.nextInt(upperBounds);
+
+	int randomSCPNumber = rand.nextInt(SCP_UPPER_BOUNDS);
 	
 	return ("https://scp-wiki.wikidot.com/scp-" + randomSCPNumber);
 	
