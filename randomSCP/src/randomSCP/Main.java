@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
+	//update whenever a new SCP series drops.
 	final static int SCP_UPPER_BOUNDS = 6999;
 	
  public static void main(String[] args)  {
